@@ -1,0 +1,18 @@
+<?php
+
+namespace Pre\PropertyLoaders\Fixture;
+
+class Fixture
+{
+    private $name = ucwords("acme fixture");
+
+    private $thing = new \stdClass();
+
+    public function name() {
+        return $this->name;
+    }
+
+    public function thing() {
+        return $this->thing;
+    }
+}

@@ -1,0 +1,33 @@
+<?php
+
+macro {
+    ·ns()·class {
+        ···body
+    }
+} >> {
+    ·class {
+        use \Pre\PropertyLoaders\PropertyLoadersTrait;
+
+        ···body
+    }
+}
+
+macro {
+    private T_VARIABLE·name = new ·ns()·class(···parameters);
+} >> {
+    private T_VARIABLE·name;
+
+    private function ··squash(··concat(__property_loader_ ··unvar(T_VARIABLE·name)))() {
+        ··squash($ this -> ··unvar(T_VARIABLE·name)) = new ·class(···parameters);
+    }
+}
+
+macro {
+    private T_VARIABLE·name = ·ns()·function(···parameters);
+} >> {
+    private T_VARIABLE·name;
+
+    private function ··squash(··concat(__property_loader_ ··unvar(T_VARIABLE·name)))() {
+        ··squash($ this -> ··unvar(T_VARIABLE·name)) = ·function(···parameters);
+    }
+}
