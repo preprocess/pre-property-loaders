@@ -4,24 +4,22 @@ namespace Pre\PropertyLoaders;
 
 trait PropertyLoadersTrait
 {
-    /**
-     * @inheritdoc
-     */
     public function __construct()
     {
-        $this->__property_loaders();
+        $this->loadProperties();
     }
 
     /**
      * Run all defined property loader methods.
      */
-    protected function __property_loaders()
+    protected function loadProperties()
     {
         $methods = get_class_methods($this);
 
-        foreach ($methods as $method)
-        {
-            if (stripos($method, "__property_loader_") === 0) {
+        foreach ($methods as $method) {
+            preg_match("/load[a-zA-Z]+Property/", $method, $matches);
+
+            if (count($matches)) {
                 $this->$method();
             }
         }

@@ -17,7 +17,7 @@ macro {
 } >> {
     private T_VARIABLE·name;
 
-    private function ··squash(··concat(__property_loader_ ··unvar(T_VARIABLE·name)))() {
+    private function ··squash(··concat(load ··studly(··unvar(T_VARIABLE·name)) Property))() {
         ··squash($ this -> ··unvar(T_VARIABLE·name)) = new ·class(···parameters);
     }
 }
@@ -27,7 +27,20 @@ macro {
 } >> {
     private T_VARIABLE·name;
 
-    private function ··squash(··concat(__property_loader_ ··unvar(T_VARIABLE·name)))() {
+    private function ··squash(··concat(load ··studly(··unvar(T_VARIABLE·name)) Property))() {
         ··squash($ this -> ··unvar(T_VARIABLE·name)) = ·function(···parameters);
+    }
+}
+
+macro {
+    function __construct(···parameters) {
+        loaders;
+        ···body
+    }
+} >> {
+    function __construct(···parameters) {
+        $this->loadProperties();
+
+        ···body
     }
 }
