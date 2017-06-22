@@ -2,14 +2,15 @@
 
 namespace Yay\DSL\Expanders;
 
+use Yay\Engine;
 use Yay\Token;
 use Yay\TokenStream;
 
-function squash($string): TokenStream
+function squash(TokenStream $stream, Engine $engine): TokenStream
 {
-    $string = preg_replace("/\\s+/", "", $string);
+    $stream = preg_replace("/\\s+/", "", $stream);
 
-    return TokenStream::fromSequence(
-        new Token(T_CONSTANT_ENCAPSED_STRING, $string)
+    return TokenStream::fromSource(
+        $engine->expand($stream, "", Engine::GC_ENGINE_DISABLED)
     );
 }
