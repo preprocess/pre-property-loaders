@@ -1,9 +1,3 @@
---DESCRIPTION--
-
-Test property loader fallback macro
-
---GIVEN--
-
 class Fixture
 {
     private $name = ucwords("acme fixture");
@@ -16,7 +10,7 @@ class Fixture
     }
 }
 
---EXPECT--
+~~~
 
 class Fixture
 {

@@ -3,7 +3,6 @@
 namespace Yay\DSL\Expanders;
 
 use Yay\Engine;
-use Yay\Token;
 use Yay\TokenStream;
 
 function squash(TokenStream $stream, Engine $engine): TokenStream
