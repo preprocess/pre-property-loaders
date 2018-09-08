@@ -1,46 +1,52 @@
 <?php
 
-macro {
-    class ·ns()·class {
-        ···body
+$(macro) {
+    class $(ns() as class)
+    {
+        $(layer() as body)
     }
 } >> {
-    class ·class {
+    class $(class)
+    {
         use \Pre\PropertyLoaders\PropertyLoadersTrait;
 
-        ···body
+        $(body)
     }
 }
 
-macro {
-    private T_VARIABLE·name = new ·ns()·class(···parameters);
+$(macro) {
+    private $(token(T_VARIABLE) as name) = new $(ns() as class)($(layer() as parameters));
 } >> {
-    private T_VARIABLE·name;
+    private $(name);
 
-    private function ··squash(··concat(load ··studly(··unvar(T_VARIABLE·name)) Property))() {
-        ··squash($ this -> ··unvar(T_VARIABLE·name)) = new ·class(···parameters);
+    private function $$(\Pre\PropertyLoaders\squash($$(concat(load $$(studly($$(unvar($(name))))) Property))))()
+    {
+        $$(\Pre\PropertyLoaders\squash($ this -> $$(unvar($(name))))) = new $(class)($(parameters));
     }
 }
 
-macro {
-    private T_VARIABLE·name = ·ns()·function(···parameters);
+$(macro) {
+    private $(token(T_VARIABLE) as name) = $(ns() as function)($(layer() as parameters));
 } >> {
-    private T_VARIABLE·name;
+    private $(name);
 
-    private function ··squash(··concat(load ··studly(··unvar(T_VARIABLE·name)) Property))() {
-        ··squash($ this -> ··unvar(T_VARIABLE·name)) = ·function(···parameters);
+    private function $$(\Pre\PropertyLoaders\squash($$(concat(load $$(studly($$(unvar($(name))))) Property))))()
+    {
+        $$(\Pre\PropertyLoaders\squash($ this -> $$(unvar($(name))))) = $(function)($(parameters));
     }
 }
 
-macro {
-    function __construct(···parameters) {
+$(macro) {
+    function __construct($(layer() as parameters))
+    {
         loaders;
-        ···body
+        $(layer() as body)
     }
 } >> {
-    function __construct(···parameters) {
+    function __construct($(parameters))
+    {
         $this->loadProperties();
 
-        ···body
+        $(body)
     }
 }
