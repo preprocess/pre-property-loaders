@@ -4,11 +4,13 @@ class Fixture
 
     private $thing = new \stdClass();
 
-    public function name() {
+    public function name()
+    {
         return $this->name;
     }
 
-    public function thing() {
+    public function thing()
+    {
         return $this->thing;
     }
 }

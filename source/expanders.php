@@ -1,6 +1,6 @@
 <?php
 
-namespace Yay\DSL\Expanders;
+namespace Pre\PropertyLoaders;
 
 use Yay\Engine;
 use Yay\TokenStream;
